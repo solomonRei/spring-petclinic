@@ -5,7 +5,7 @@ pipeline {
   stages {
     stage('Build') {
       agent {
-        docker {
+        slave_1 {
           image 'maven:3.5.0'
         }
       }
