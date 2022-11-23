@@ -8,9 +8,8 @@ pipeline {
     }
   stages {
     stage('Build') {
-      agent any {
-          image 'maven:3.5.0'
-      }
+      agent any 
+      image 'maven:3.5.0'
       steps {
                 sh '''
                     echo "PATH = ${PATH}"
