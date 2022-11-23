@@ -10,8 +10,9 @@ pipeline {
     stage('Build') {
       agent {
         any {
-      image 'maven:3.5.0'
+          image 'maven:3.5.0'
         }
+      }
       steps {
                 sh '''
                     echo "PATH = ${PATH}"
@@ -19,7 +20,6 @@ pipeline {
                 ''' 
           sh 'mvn clean install -B'
       }
-            }
     }
     stage('Build container') {
       agent any
