@@ -5,7 +5,7 @@ pipeline {
   stages {
     stage('Build') {
       agent {
-        slave_1 {
+        any {
           image 'maven:3.5.0'
         }
       }
