@@ -1,5 +1,3 @@
-#!/bin/env groovy
-
 pipeline {
   agent {
     label 'slave'
@@ -10,6 +8,7 @@ pipeline {
           sh 'mvn clean install -B'
       }
     }
+    
     stage('Build container') {
       steps {
         script {
@@ -18,6 +17,12 @@ pipeline {
             sh "docker build -t petclinic:${TAG} ."
         }
       }
+    }
+    
+  }
+  post{
+    always{
+      cleanWS()
     }
   }
 }
