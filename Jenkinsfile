@@ -2,6 +2,7 @@ pipeline {
   environment {
     registry = "smeloved/pet-clinic"
     registryCredential = 'dockerhub'
+    dockerImage = ''
   }
   agent {
     label 'slave'
@@ -25,7 +26,7 @@ pipeline {
             pom = readMavenPom file: 'pom.xml'
             TAG = pom.version
             dockerImage = docker.build registry + ":latest"
-            sh "docker build -t petclinic:${TAG} ."
+//             sh "docker build -t petclinic:${TAG} ."
 //             sh "mvn spring-boot:build-image"
         }
       }
