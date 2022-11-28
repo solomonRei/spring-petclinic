@@ -15,7 +15,7 @@ pipeline {
             pom = readMavenPom file: 'pom.xml'
             TAG = pom.version
 //             sh "docker build -t petclinic:${TAG} ."
-            sh "mvnw spring-boot:build-image"
+            sh "mvn spring-boot:build-image"
         }
       }
     }
