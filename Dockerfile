@@ -1,1 +1,10 @@
-FROM maven:3.6.3-openjdk-11 as build
+FROM openjdk:11-jre-slim as prod
+EXPOSE 8081
+
+WORKDIR /run
+
+CMD [mvn compile]
+
+COPY **/*.jar petclinic.jar
+
+CMD java -jar petclinic.jar
