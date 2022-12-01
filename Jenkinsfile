@@ -25,18 +25,22 @@ pipeline {
         script {
             pom = readMavenPom file: 'pom.xml'
             TAG = pom.version
-            dockerImage = docker.build registry + ":latest"
-//             sh "docker build -t petclinic:${TAG} ."
-//             sh "mvn spring-boot:build-image"
+            // dockerImage = docker.build registry + ":${TAG}"
+            sh "docker build -t petclinic:${TAG} ."
+            // sh "docker container ls --all --quiet --filter 'name=petclinic'"
+            // sh "mvn spring-boot:build-image"
         }
       }
     }
    stage('Deploy Image') {
       steps{
          script {
-            docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
-          }
+            echo 'Doploying Image'
+            // docker.withRegistry( '', registryCredential ) {
+            // dockerImage.push()
+          
+             
+        //  }
         }
       }
     }
